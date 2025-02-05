@@ -93,4 +93,4 @@ Este repo contiene la práctica de Git.
 
 - ¿Qué comando o comandos usaste en el punto 33?
 
-    * `git switch -` para llevar el HEAD al estado actual.
+    * `git checkout main` para volver a la situación actual.
