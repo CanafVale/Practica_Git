@@ -82,12 +82,13 @@ Este repo contiene la práctica de Git.
     * `git switch -c title` 
     * `git checkout main` 
     * `git merge --no-ff title`
-
-    Con `git reset --hard <hash>` para rehacerlo podría haberlo hecho pero no quedaría ningún commit como referencia en el historial.
+    
+    Se me queda en estado `MERGING` así que forzamos:
+    * `git commit -m "Rehacer el merge`
 
 - ¿Qué comando o comandos usaste en el paso 32?
 
-    * `git log --oneline` para buscar el hash
+    * `git log --oneline --rever` para buscar el hash, pero empezando por el más antiguo
     * `git checkout <hash>` para mover el HEAD.
 
 - ¿Qué comando o comandos usaste en el punto 33?
