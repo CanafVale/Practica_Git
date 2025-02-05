@@ -28,29 +28,34 @@ Este repo contiene la práctica de Git.
 
 - ¿Qué comando o comandos utilizaste en el paso 25?
 
-     * `git log --graph --oneline`: Genera un gráfico del historial de los commits del repositorio, permitiendo ver el flujo de trabajo. 
+    * He usado `git log --oneline --graph --all`. 
+    
+    * `git log` muestra el historial de commits. 
+    El modificador `--oneline` muestra cada commit en una línea; `--graph` dibuja el gráfico de ramas y de merges y `--all` muestra todas las ramas, no solo aquella en la que actualmente estamos.
 
+    * Recibo en la consola:
     ```
-    *   c5e96c9 (origin/styled) Resolucion de conflictos, mantenemos styled
-    |\
-    | * 0d59323 (tag: htmlify, origin/htmlify) style: Cambia el formato a estilo HMTL en git-nuestro.md
-    * | 4dc63c8 docs: Puntos 11, 12 y 13 del enunciado
-    * | c76ee25 (tag: styled) style: Cambio de estilo en el formato de palabras claves
+    *2cca9e7 (title) Añadido título
+    *cbb23d7 (HEAD -> main, styled) Aplicar cursivas al git-nuestro
+    | *d6ef94b (htmlify) Paso 18
+    | *333d6c8 Poner formato HTML a fichero git-nuestro.md
     |/
-    * 312b635 (tag: inicial) first commit
+    *5ab850a (origin/main) Initial git con poema
     ```
+    * Las ramas se indican entre paréntesis y los merges con `|` y `\`.
 
 - El merge del paso 26, ¿Podría ser fast forward? ¿Por qué?
     
-    * Sí, porque la rama main no se había modificado nuevamente desde el ultimo merge con styled. Aunque un `merge --no-ff` ofrece claridad en el historial al tener que hacer un commit ya que el fast forward no crea un commit.
-
+    * Sí, porque la rama main no se había vuelto a modificar desde el ultimo merge con styled. 
+    * Sin embargo, como el fast forward no genera un commit, mejor un no fast forward. 
+    
 - ¿Qué comando o comandos utilizaste en el paso 27?
 
-    * `git reset --soft HEAD~1`: deshace el merge y mantiene los cambios en el working copy.
+    * `git reset --soft HEAD~1`: a diferencia del `HARD` que hemos hecho en el paso 11, utilizar el modificador `--soft` deshace el merge y mantiene los cambios en el working copy.
 
 - ¿Qué comando o comandos utilizaste en el paso 28?
 
-    * `git restore --stage y git restore <archivo>`
+    * `git reset --hard`: no tenía claro qué había que descartar, porque solo pone "Descartar los cambios", así que voy a suponer que se quiere descartar todo, tanto los cambios en el fichero como lo que no se haya hecho un commit ya
 
 - ¿Qué comando o comandos utilizaste en el paso 29?
 
@@ -58,8 +63,22 @@ Este repo contiene la práctica de Git.
 
 - ¿Qué comando o comandos utilizaste en el paso 30?
 
-    * `git reflog`
-    * `git checkout <hash>`
+    * Como en el paso 27 deshicimos el merge con `git reset --soft HEAD~1`, ahora podemos volver a hacerlo.
+
+    * `git reflog`, y listamos para encontrar el hash
+    * `git checkout <hash>`, en mi caso `git checkout -b title 2cca9e7`
+    Pero me da este error:
+
+    ```
+    afernandezmartinez@ESWCND2341P4K MINGW64 ~/Practica_Git (main)
+    $ git checkout -b title 2cca9e7
+    error: The following untracked working tree files would be overwritten by checkout:
+        README.md
+    Please move or remove them before you switch branches.
+    Aborting
+   ```
+    Tenemos que hacer un commit de README.md para no perder los cambios y luego ya seguimos.
+
     * `git switch -c title` 
     * `git checkout main` 
     * `git merge --no-ff title`
