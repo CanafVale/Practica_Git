@@ -70,7 +70,6 @@ Este repo contiene la práctica de Git.
     Pero me da este error:
 
     ```
-    afernandezmartinez@ESWCND2341P4K MINGW64 ~/Practica_Git (main)
     $ git checkout -b title 2cca9e7
     error: The following untracked working tree files would be overwritten by checkout:
         README.md
